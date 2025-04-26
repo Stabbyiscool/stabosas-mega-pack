@@ -11,3 +11,5 @@ and
 COPY 256 SUMS!!!! (becuz of makos)
 
 maybe more later if i ever feel like vscode is missing smth
+
+![maka](./asset/image.png)
