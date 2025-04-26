@@ -1,0 +1,41 @@
+{
+    "name": "stabosas-mega-pack",
+    "displayName": "Stabosas Mega Pack",
+    "description": "Tools that i use",
+    "version": "0.0.1",
+    "engines": {
+      "vscode": "^1.99.1"
+    },
+    "activationEvents": [
+      "onStartupFinished"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+      "commands": [
+        {
+          "command": "extension.copySha256sum",
+          "title": "Copy sha256 checksum"
+        }
+      ],
+      "menus": {
+        "explorer/context": [
+          {
+            "command": "extension.copySha256sum",
+            "when": "resourceLangId != ''",
+            "group": "navigation@99"
+          }
+        ]
+      }
+    },
+    "scripts": {
+      "vscode:prepublish": "tsc -p ./"
+    },
+    "devDependencies": {
+      "@types/node": "^22.15.2",
+      "@types/vscode": "^1.99.1",
+      "@vscode/test-electron": "^2.5.2",
+      "glob": "^11.0.2",
+      "typescript": "^4.7.0"
+    }
+  }
+  
