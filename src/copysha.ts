@@ -12,7 +12,7 @@ export function registerSha256(context: vscode.ExtensionContext) {
       const { stdout } = await execAsync(`sha256sum "${filePath}"`);
       const sha = stdout.trim().split(/\s+/)[0];
 
-      if (!sha) throw new Error('sha not found in command output');
+      if (!sha) throw new Error('sha not found in command output!');
 
       await vscode.env.clipboard.writeText(sha);
       vscode.window.showInformationMessage(`sha256: ${sha}`);
