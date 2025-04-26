@@ -31,8 +31,10 @@ export function registerGitPushAll() {
     terminal.sendText(`git add .`);
     terminal.sendText(`git commit -m "${answer}"`);
     terminal.sendText(`git push`);
-    terminal.sendText('exit');
-    terminal.dispose();
+
+    setTimeout(() => {
+      terminal.dispose();
+    }, 2000);
   });
 }
 
@@ -65,8 +67,10 @@ export function registerGitSaver() {
       terminal.sendText(`git add "${relativePath}"`);
       terminal.sendText(`git commit -m "auto: update ${relativePath}"`);
       terminal.sendText(`git push`);
-      terminal.sendText('exit');
-      terminal.dispose();
+
+      setTimeout(() => {
+        terminal.dispose();
+      }, 2000);
     }
   });
 }
