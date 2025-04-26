@@ -4,6 +4,7 @@ import { promisify } from 'util';
 import * as path from 'path';
 
 const execAsync = promisify(exec);
+
 export function registerGitPushAll() {
   vscode.commands.registerCommand('extension.gitPushAll', async () => {
     const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -30,6 +31,8 @@ export function registerGitPushAll() {
     terminal.sendText(`git add .`);
     terminal.sendText(`git commit -m "${answer}"`);
     terminal.sendText(`git push`);
+    terminal.sendText('exit');
+    terminal.dispose();
   });
 }
 
@@ -62,6 +65,8 @@ export function registerGitSaver() {
       terminal.sendText(`git add "${relativePath}"`);
       terminal.sendText(`git commit -m "auto: update ${relativePath}"`);
       terminal.sendText(`git push`);
+      terminal.sendText('exit');
+      terminal.dispose();
     }
   });
 }
