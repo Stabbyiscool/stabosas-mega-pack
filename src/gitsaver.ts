@@ -4,6 +4,34 @@ import { promisify } from 'util';
 import * as path from 'path';
 
 const execAsync = promisify(exec);
+export function registerGitPushAll() {
+  vscode.commands.registerCommand('stabosaTools.gitPushAll', async () => {
+    const workspaceFolders = vscode.workspace.workspaceFolders;
+    if (!workspaceFolders) return;
+    const cwd = workspaceFolders[0].uri.fsPath;
+
+    try {
+      await execAsync('git rev-parse --is-inside-work-tree', { cwd });
+    } catch {
+      vscode.window.showErrorMessage('Not a Git repository.');
+      return;
+    }
+
+    const answer = await vscode.window.showInputBox({
+      prompt: "Enter commit message",
+      value: "auto: update everything"
+    });
+
+    if (!answer) return;
+
+    const terminal = vscode.window.createTerminal("Git Push All");
+    terminal.show();
+    terminal.sendText(`cd "${cwd}"`);
+    terminal.sendText(`git add .`);
+    terminal.sendText(`git commit -m "${answer}"`);
+    terminal.sendText(`git push`);
+  });
+}
 
 export function registerGitSaver() {
   vscode.workspace.onWillSaveTextDocument(async (e) => {
