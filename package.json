@@ -1,5 +1,9 @@
 {
     "name": "stabosas-mega-pack",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Stabbyiscool/stabosas-mega-pack.git"
+    },
     "displayName": "Stabosas Mega Pack",
     "description": "Tools that i use",
     "version": "0.0.1",
@@ -11,6 +15,13 @@
     ],
     "main": "./dist/extension.js",
     "contributes": {
+      "keybindings": [
+        {
+          "command": "extension.gitPushAll",
+          "key": "ctrl+alt+p",
+          "when": "editorTextFocus"
+        }
+      ],
       "commands": [
         {
           "command": "extension.copySha256sum",

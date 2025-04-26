@@ -5,7 +5,7 @@ import * as path from 'path';
 
 const execAsync = promisify(exec);
 export function registerGitPushAll() {
-  vscode.commands.registerCommand('stabosaTools.gitPushAll', async () => {
+  vscode.commands.registerCommand('extension.gitPushAll', async () => {
     const workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) return;
     const cwd = workspaceFolders[0].uri.fsPath;
